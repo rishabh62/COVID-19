@@ -1,19 +1,55 @@
-<mvc:View controllerName="corona.virus.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View controllerName="corona.virus.controller.Home" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m"
+	xmlns:core="sap.ui.core">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
 					<content>
 						<Table id="table" items="{covid>/}">
+							<headerToolbar>
+								<OverflowToolbar>
+									<content>
+										<!--<Title text="Products" level="H2"/>-->
+										<SearchField placeholder="eg: India" width="20%"/>
+										<!--<ToolbarSpacer/>-->
+									</content>
+								</OverflowToolbar>
+							</headerToolbar>
+							<!--<infoToolbar>-->
+							<!--	<OverflowToolbar>-->
+							<!--		<Label text="World Statistics"/>-->
+							<!--	</OverflowToolbar>-->
+							<!--</infoToolbar>-->
 							<columns>
 								<Column>
-									<Text text="country"/>
+									<Text text="Country"/>
+								</Column>
+								<Column>
+									<Text text="Total Cases"/>
+								</Column>
+								<Column>
+									<Text text="Today's Cases"/>
+								</Column>
+								<Column>
+									<Text text="Today's Deaths"/>
+								</Column>
+								<Column>
+									<Text text="Total Deaths"/>
 								</Column>
 							</columns>
 							<items>
 								<ColumnListItem>
 									<cells>
-										<Text text="{covid>country}"/>
+										<FlexBox alignItems="Start" justifyContent="Start">
+											<items>
+												<Image class="sapUiSmallMarginEnd" src="{covid>countryInfo/flag}" width="50px" height="32px"/>
+												<ObjectIdentifier title="{covid>country}"/>
+											</items>
+										</FlexBox>
+										<ObjectNumber number="{path: 'covid>cases', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"/>
+										<ObjectNumber number="{path: 'covid>todayCases', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"/>
+										<ObjectNumber number="{path: 'covid>todayDeaths', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"/>
+										<ObjectNumber number="{path: 'covid>deaths', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"/>
 									</cells>
 								</ColumnListItem>
 							</items>
