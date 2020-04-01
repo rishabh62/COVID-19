@@ -1,1 +1,16 @@
 /* Enter your custom styles here */
+
+.searchField {
+    width: 25%;
+}
+
+@media all and (max-width: 450px) {
+    .searchField {
+        width: 100%;
+    }
+}
+@media all and (min-width: 450px) and (max-width: 700px) {
+    .searchField {
+        width: 50%;
+    }
+}

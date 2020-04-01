@@ -5,15 +5,26 @@
 			<pages>
 				<Page id="page" title="{i18n>title}">
 					<content>
-						<Table id="table" items="{covid>/}">
+						<Toolbar>
+							<content>
+								<ToolbarSpacer/>
+								<SegmentedButton>
+									<items>
+										<SegmentedButtonItem text="Table"/>
+										<SegmentedButtonItem text="Chart"/>
+									</items>
+								</SegmentedButton>
+							</content>
+						</Toolbar>
+						<Table id="table" items="{covid>/}" busy="{busy>/busy}">
 							<headerToolbar>
-								<OverflowToolbar>
+								<Toolbar>
 									<content>
 										<!--<Title text="Products" level="H2"/>-->
-										<SearchField placeholder="eg: India" width="20%"/>
+										<SearchField placeholder="eg: India" class="searchField" liveChange="onSearch"/>
 										<!--<ToolbarSpacer/>-->
 									</content>
-								</OverflowToolbar>
+								</Toolbar>
 							</headerToolbar>
 							<!--<infoToolbar>-->
 							<!--	<OverflowToolbar>-->
@@ -21,19 +32,19 @@
 							<!--	</OverflowToolbar>-->
 							<!--</infoToolbar>-->
 							<columns>
-								<Column>
+								<Column demandPopin="true">
 									<Text text="Country"/>
 								</Column>
-								<Column>
+								<Column demandPopin="true">
 									<Text text="Total Cases"/>
 								</Column>
-								<Column>
+								<Column demandPopin="true">
 									<Text text="Today's Cases"/>
 								</Column>
-								<Column>
+								<Column demandPopin="true">
 									<Text text="Today's Deaths"/>
 								</Column>
-								<Column>
+								<Column demandPopin="true">
 									<Text text="Total Deaths"/>
 								</Column>
 							</columns>
@@ -48,8 +59,8 @@
 										</FlexBox>
 										<ObjectNumber number="{path: 'covid>cases', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"/>
 										<ObjectNumber number="{path: 'covid>todayCases', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"/>
-										<ObjectNumber number="{path: 'covid>todayDeaths', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"/>
-										<ObjectNumber number="{path: 'covid>deaths', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"/>
+										<ObjectNumber number="{path: 'covid>todayDeaths', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}" state="Error"/>
+										<ObjectNumber number="{path: 'covid>deaths', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}" state="Error"/>
 									</cells>
 								</ColumnListItem>
 							</items>
