@@ -5,24 +5,34 @@
 			<pages>
 				<Page id="page" title="{i18n>title}">
 					<content>
-						<Toolbar>
-							<content>
-								<ToolbarSpacer/>
-								<SegmentedButton>
-									<items>
-										<SegmentedButtonItem text="Table"/>
-										<SegmentedButtonItem text="Chart"/>
-									</items>
-								</SegmentedButton>
-							</content>
-						</Toolbar>
-						<Table id="table" items="{covid>/}" busy="{busy>/busy}">
+						<HeaderContainer height="15%">
+							<TileContent footer="Cases Worldwide">
+								<NumericContent value="{path: 'covidAll>/cases', formatter: '.formatter.groupNumber'}" valueColor="Neutral" adaptiveFontSize="false" truncateValueTo="10" formatterValue="true"/>
+							</TileContent>
+							<TileContent footer="Recovered Worldwide">
+								<NumericContent value="{covidAll>/recovered}" valueColor="Good" adaptiveFontSize="false" truncateValueTo="10"/>
+							</TileContent>
+							<TileContent footer="Deaths Worldwide">
+								<NumericContent value="{covidAll>/deaths}" valueColor="Error" adaptiveFontSize="false" truncateValueTo="10"/>
+							</TileContent>
+							<TileContent footer="Affected Countries">
+								<NumericContent value="{covidAll>/affectedCountries}" valueColor="Critical" adaptiveFontSize="false" truncateValueTo="10"/>
+							</TileContent>
+						</HeaderContainer>
+						<ScrollContainer vertical="true" height="85%">
+						<Table id="table" items="{covid>/}" busy="{busy>/busy}" sticky="ColumnHeaders,HeaderToolbar">
 							<headerToolbar>
 								<Toolbar>
 									<content>
 										<!--<Title text="Products" level="H2"/>-->
 										<SearchField placeholder="eg: India" class="searchField" liveChange="onSearch"/>
-										<!--<ToolbarSpacer/>-->
+										<ToolbarSpacer/>
+										<SegmentedButton>
+											<items>
+												<SegmentedButtonItem text="Table" icon="sap-icon://table-view"/>
+												<SegmentedButtonItem text="Chart" icon="sap-icon://pie-chart"/>
+											</items>
+										</SegmentedButton>
 									</content>
 								</Toolbar>
 							</headerToolbar>
@@ -42,6 +52,9 @@
 									<Text text="Today's Cases"/>
 								</Column>
 								<Column demandPopin="true">
+									<Text text="Recovered"/>
+								</Column>
+								<Column demandPopin="true">
 									<Text text="Today's Deaths"/>
 								</Column>
 								<Column demandPopin="true">
@@ -58,13 +71,16 @@
 											</items>
 										</FlexBox>
 										<ObjectNumber number="{path: 'covid>cases', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"/>
-										<ObjectNumber number="{path: 'covid>todayCases', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"/>
+										<ObjectNumber number="{path: 'covid>todayCases', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"
+											state="Information"/>
+										<ObjectNumber number="{path: 'covid>recovered', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}" state="Success"/>
 										<ObjectNumber number="{path: 'covid>todayDeaths', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}" state="Error"/>
 										<ObjectNumber number="{path: 'covid>deaths', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}" state="Error"/>
 									</cells>
 								</ColumnListItem>
 							</items>
 						</Table>
+						</ScrollContainer>
 					</content>
 				</Page>
 			</pages>

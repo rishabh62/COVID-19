@@ -25,9 +25,18 @@ sap.ui.define([
 
 			// set the device model
 			this.setModel(models.createDeviceModel(), "device");
-			
+
 			//create busy model
 			this.setModel(models.createBusyModel(), "busy");
+
+			//api endpoint to fetch country wise data from
+			var sUrl = "https://corona.lmao.ninja/countries";
+			this.setModel(models.createCovidModel(sUrl), "covid");
+			
+			//api endpoint to fetch worldwide data from
+			var sUrl = "https://corona.lmao.ninja/all";
+			this.setModel(models.createCovidModel(sUrl), "covidAll");
+			
 		}
 	});
 });

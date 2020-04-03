@@ -16,6 +16,16 @@ sap.ui.define([
 			var oModel = new JSONModel({busy: true});
 			oModel.setDefaultBindingMode("OneWay");
 			return oModel;
+		},
+
+		createCovidModel: function (sUrl) {
+			var oModel = new sap.ui.model.json.JSONModel(sUrl);
+			return oModel;
+		},
+
+		createCovidAllModel: function (sUrl) {
+			var oModel = new sap.ui.model.json.JSONModel(sUrl);
+			return oModel;
 		}
 
 	};
