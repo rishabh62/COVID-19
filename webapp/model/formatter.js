@@ -3,7 +3,8 @@ sap.ui.define([], function(){
 	
 	return{
 		groupNumber: function(sNumber){
-			return "123,213";
+			var oNumFormat = sap.ui.core.format.NumberFormat.getIntegerInstance({groupingEnabled: true});
+			return oNumFormat.format(sNumber);
 		}	
 	}
 	

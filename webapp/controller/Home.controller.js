@@ -16,7 +16,7 @@ sap.ui.define([
 
 		onSearch: function (oEvent) {
 			// add filter for search
-			var aFilters = [];
+			var aFilters = [new sap.ui.model.Filter("country", sap.ui.model.FilterOperator.NE, 'World')];
 			var sQuery = oEvent.getSource().getValue();
 			if (sQuery && sQuery.length > 0) {
 				var filter = new sap.ui.model.Filter("country", sap.ui.model.FilterOperator.Contains, sQuery);
@@ -25,7 +25,7 @@ sap.ui.define([
 			// update list binding
 			var oTable = this.byId("table");
 			var oBinding = oTable.getBinding("items");
-			oBinding.filter(aFilters, "Application");
+			oBinding.filter(new sap.ui.model.Filter( {filters: aFilters, and: true}), "Application" );
 		}
 
 	});

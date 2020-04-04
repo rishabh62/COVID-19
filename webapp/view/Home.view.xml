@@ -5,22 +5,22 @@
 			<pages>
 				<Page id="page" title="{i18n>title}">
 					<content>
-						<HeaderContainer height="15%">
-							<TileContent footer="Cases Worldwide">
-								<NumericContent value="{path: 'covidAll>/cases', formatter: '.formatter.groupNumber'}" valueColor="Neutral" adaptiveFontSize="false" truncateValueTo="10" formatterValue="true"/>
+						<HeaderContainer height="15%" width="100%">
+							<TileContent footer="Cases Worldwide" footerColor="Neutral">
+								<NumericContent width="160px" value="{path: 'covidAll>/cases', formatter: '.formatter.groupNumber'}" valueColor="Neutral" adaptiveFontSize="false" truncateValueTo="10" formatterValue="true"/>
 							</TileContent>
-							<TileContent footer="Recovered Worldwide">
-								<NumericContent value="{covidAll>/recovered}" valueColor="Good" adaptiveFontSize="false" truncateValueTo="10"/>
+							<TileContent footer="Recovered Worldwide" footerColor="Good">
+								<NumericContent value="{path: 'covidAll>/recovered', formatter: '.formatter.groupNumber'}" valueColor="Good" adaptiveFontSize="false" truncateValueTo="10"/>
 							</TileContent>
-							<TileContent footer="Deaths Worldwide">
-								<NumericContent value="{covidAll>/deaths}" valueColor="Error" adaptiveFontSize="false" truncateValueTo="10"/>
+							<TileContent footer="Deaths Worldwide" footerColor="Error">
+								<NumericContent value="{path: 'covidAll>/deaths', formatter: '.formatter.groupNumber'}" valueColor="Error" adaptiveFontSize="false" truncateValueTo="10"/>
 							</TileContent>
-							<TileContent footer="Affected Countries">
-								<NumericContent value="{covidAll>/affectedCountries}" valueColor="Critical" adaptiveFontSize="false" truncateValueTo="10"/>
+							<TileContent footer="Affected Countries" footerColor="Critical">
+								<NumericContent value="{path: 'covidAll>/affectedCountries', formatter: '.formatter.groupNumber'}" valueColor="Critical" adaptiveFontSize="false" truncateValueTo="10"/>
 							</TileContent>
 						</HeaderContainer>
 						<ScrollContainer vertical="true" height="85%">
-						<Table id="table" items="{covid>/}" busy="{busy>/busy}" sticky="ColumnHeaders,HeaderToolbar">
+						<Table id="table" items="{path: 'covid>/', filters: [{path: 'country', operator: 'NE', value1: 'World'}]}" busy="{busy>/busy}" sticky="ColumnHeaders,HeaderToolbar" popinLayout="Block">
 							<headerToolbar>
 								<Toolbar>
 									<content>
@@ -48,16 +48,16 @@
 								<Column demandPopin="true">
 									<Text text="Total Cases"/>
 								</Column>
-								<Column demandPopin="true">
+								<Column demandPopin="true" minScreenWidth="400px">
 									<Text text="Today's Cases"/>
 								</Column>
-								<Column demandPopin="true">
+								<Column demandPopin="true" minScreenWidth="400px">
 									<Text text="Recovered"/>
 								</Column>
-								<Column demandPopin="true">
+								<Column demandPopin="true" minScreenWidth="400px">
 									<Text text="Today's Deaths"/>
 								</Column>
-								<Column demandPopin="true">
+								<Column demandPopin="true" minScreenWidth="400px">
 									<Text text="Total Deaths"/>
 								</Column>
 							</columns>
