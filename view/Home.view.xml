@@ -27,7 +27,7 @@
 							<!--	</items>-->
 							<!--</SegmentedButton>-->
 						</HeaderContainer>
-						<ScrollContainer vertical="true" height="85%">
+						<ScrollContainer vertical="true" height="83%">
 							<Table id="table" items="{path: 'covid>/', filters: [{path: 'country', operator: 'NE', value1: 'World'}]}" busy="{busy>/busy}"
 								sticky="ColumnHeaders,HeaderToolbar" popinLayout="Block">
 								<headerToolbar>
