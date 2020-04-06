@@ -5,7 +5,7 @@
 			<pages>
 				<Page id="page" title="{i18n>title}">
 					<content>
-						<HeaderContainer height="15%" width="100%">
+						<HeaderContainer height="17%" width="100%">
 							<TileContent footer="Cases Worldwide" footerColor="Neutral">
 								<NumericContent width="160px" value="{path: 'covidAll>/cases', formatter: '.formatter.groupNumber'}" valueColor="Neutral"
 									truncateValueTo="10" formatterValue="true"/>
