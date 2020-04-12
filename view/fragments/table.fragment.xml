@@ -1,0 +1,58 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Table id="table" items="{path: 'covid>/', filters: [{path: 'country', operator: 'NE', value1: 'World'}]}" busy="{busy>/busy}"
+		sticky="ColumnHeaders,HeaderToolbar" popinLayout="Block"  visible="{tableChart>/table}">
+		<headerToolbar>
+			<Toolbar>
+				<content>
+					<!--<Title text="Products" level="H2"/>-->
+					<SearchField placeholder="eg: India" liveChange="onSearch"/>
+					<ToolbarSpacer/>
+					<!--ṣutton>-->
+				</content>
+			</Toolbar>
+		</headerToolbar>
+		<!--<infoToolbar>-->
+		<!--	<OverflowToolbar>-->
+		<!--		<Label text="World Statistics"/>-->
+		<!--	</OverflowToolbar>-->
+		<!--</infoToolbar>-->
+		<columns>
+			<Column demandPopin="true" width="200px">
+				<Text text="Country"/>
+			</Column>
+			<Column demandPopin="true">
+				<Text text="Total Cases"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="500px">
+				<Text text="Today's Cases"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="500px">
+				<Text text="Recovered"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="500px">
+				<Text text="Today's Deaths"/>
+			</Column>
+			<Column demandPopin="true" minScreenWidth="500px">
+				<Text text="Total Deaths"/>
+			</Column>
+		</columns>
+		<items>
+			<ColumnListItem>
+				<cells>
+					<FlexBox alignItems="Start" justifyContent="Start">
+						<items>
+							<Image class="sapUiSmallMarginEnd" src="{covid>countryInfo/flag}" width="50px" height="32px"/>
+							<ObjectIdentifier title="{covid>country}"/>
+						</items>
+					</FlexBox>
+					<ObjectNumber number="{path: 'covid>cases', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"/>
+					<ObjectNumber number="{path: 'covid>todayCases', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"
+						state="Information"/>
+					<ObjectNumber number="{path: 'covid>recovered', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}" state="Success"/>
+					<ObjectNumber number="{path: 'covid>todayDeaths', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}" state="Error"/>
+					<ObjectNumber number="{path: 'covid>deaths', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}" state="Error"/>
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+</core:FragmentDefinition>

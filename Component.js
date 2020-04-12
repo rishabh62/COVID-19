@@ -37,6 +37,9 @@ sap.ui.define([
 			var sUrl = "https://corona.lmao.ninja/all";
 			this.setModel(models.createCovidModel(sUrl), "covidAll");
 			
+			//create model for table/chart visibility
+			this.setModel(models.createTableChartModel(), "tableChart");
+			
 		}
 	});
 });

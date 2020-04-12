@@ -4,6 +4,10 @@
     width: 25%;
 }
 
+.black {
+	background-color: #1c2228;
+}
+
 @media all and (max-width: 450px) {
     .searchField {
         width: 100%;

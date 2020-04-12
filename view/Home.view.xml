@@ -5,7 +5,7 @@
 			<pages>
 				<Page id="page" title="{i18n>title}">
 					<content>
-						<HeaderContainer height="17%" width="100%">
+						<HeaderContainer height="105px" width="100%">
 							<TileContent footer="Cases Worldwide" footerColor="Neutral">
 								<NumericContent width="160px" value="{path: 'covidAll>/cases', formatter: '.formatter.groupNumber'}" valueColor="Neutral"
 									truncateValueTo="10" formatterValue="true"/>
@@ -20,70 +20,16 @@
 								<NumericContent value="{path: 'covidAll>/affectedCountries', formatter: '.formatter.groupNumber'}" valueColor="Critical"
 									truncateValueTo="10"/>
 							</TileContent>
-							<!--<SegmentedButton>-->
-							<!--	<items>-->
-							<!--		<SegmentedButtonItem text="Table" icon="sap-icon://table-view"/>-->
-							<!--		<SegmentedButtonItem text="Chart" icon="sap-icon://pie-chart"/>-->
-							<!--	</items>-->
-							<!--</SegmentedButton>-->
 						</HeaderContainer>
-						<ScrollContainer vertical="true" height="83%">
-							<Table id="table" items="{path: 'covid>/', filters: [{path: 'country', operator: 'NE', value1: 'World'}]}" busy="{busy>/busy}"
-								sticky="ColumnHeaders,HeaderToolbar" popinLayout="Block">
-								<headerToolbar>
-									<Toolbar>
-										<content>
-											<!--<Title text="Products" level="H2"/>-->
-											<SearchField placeholder="eg: India" liveChange="onSearch"/>
-											<ToolbarSpacer/>
-											<!--ṣutton>-->
-										</content>
-									</Toolbar>
-								</headerToolbar>
-								<!--<infoToolbar>-->
-								<!--	<OverflowToolbar>-->
-								<!--		<Label text="World Statistics"/>-->
-								<!--	</OverflowToolbar>-->
-								<!--</infoToolbar>-->
-								<columns>
-									<Column demandPopin="true">
-										<Text text="Country"/>
-									</Column>
-									<Column demandPopin="true">
-										<Text text="Total Cases"/>
-									</Column>
-									<Column demandPopin="true" minScreenWidth="400px">
-										<Text text="Today's Cases"/>
-									</Column>
-									<Column demandPopin="true" minScreenWidth="400px">
-										<Text text="Recovered"/>
-									</Column>
-									<Column demandPopin="true" minScreenWidth="400px">
-										<Text text="Today's Deaths"/>
-									</Column>
-									<Column demandPopin="true" minScreenWidth="400px">
-										<Text text="Total Deaths"/>
-									</Column>
-								</columns>
-								<items>
-									<ColumnListItem>
-										<cells>
-											<FlexBox alignItems="Start" justifyContent="Start">
-												<items>
-													<Image class="sapUiSmallMarginEnd" src="{covid>countryInfo/flag}" width="50px" height="32px"/>
-													<ObjectIdentifier title="{covid>country}"/>
-												</items>
-											</FlexBox>
-											<ObjectNumber number="{path: 'covid>cases', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"/>
-											<ObjectNumber number="{path: 'covid>todayCases', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}"
-												state="Information"/>
-											<ObjectNumber number="{path: 'covid>recovered', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}" state="Success"/>
-											<ObjectNumber number="{path: 'covid>todayDeaths', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}" state="Error"/>
-											<ObjectNumber number="{path: 'covid>deaths', type: 'sap.ui.model.type.Integer', formatOptions:{groupingEnabled: 'true'}}" state="Error"/>
-										</cells>
-									</ColumnListItem>
-								</items>
-							</Table>
+						<SegmentedButton width="100%" selectedKey="table" id="segBtn" selectionChange="onSelectionChange">
+							<items>
+								<SegmentedButtonItem text="Table" key="table" icon="sap-icon://table-view"/>
+								<SegmentedButtonItem text="Chart" key="chart" icon="sap-icon://pie-chart"/>
+							</items>
+						</SegmentedButton>
+						<ScrollContainer vertical="true" height="79%">
+							<core:Fragment fragmentName="corona.virus.view.fragments.table" id="Home" type="XML"/>
+							<core:Fragment fragmentName="corona.virus.view.fragments.chart" id="Home" type="XML"/>
 						</ScrollContainer>
 					</content>
 				</Page>

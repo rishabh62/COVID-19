@@ -19,12 +19,17 @@ sap.ui.define([
 		},
 
 		createCovidModel: function (sUrl) {
-			var oModel = new sap.ui.model.json.JSONModel(sUrl);
+			var oModel = new JSONModel(sUrl);
 			return oModel;
 		},
 
 		createCovidAllModel: function (sUrl) {
-			var oModel = new sap.ui.model.json.JSONModel(sUrl);
+			var oModel = new JSONModel(sUrl);
+			return oModel;
+		},
+		
+		createTableChartModel: function(){
+			var oModel = new JSONModel({table: true, chart: false});
 			return oModel;
 		}
 
