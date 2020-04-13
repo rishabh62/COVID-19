@@ -57,7 +57,7 @@ sap.ui.define([
 				aFilters.push(filter);
 			}
 			// update list binding
-			var oTable = this.byId("table");
+			var oTable = this.byId("Home--table");
 			var oBinding = oTable.getBinding("items");
 			oBinding.filter(new sap.ui.model.Filter({
 				filters: aFilters,
