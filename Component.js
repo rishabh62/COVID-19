@@ -30,11 +30,11 @@ sap.ui.define([
 			this.setModel(models.createBusyModel(), "busy");
 
 			//api endpoint to fetch country wise data from
-			var sUrl = "https://corona.lmao.ninja/countries";
+			var sUrl = "https://corona.lmao.ninja/v2/countries";
 			this.setModel(models.createCovidModel(sUrl), "covid");
 			
 			//api endpoint to fetch worldwide data from
-			var sUrl = "https://corona.lmao.ninja/all";
+			var sUrl = "https://corona.lmao.ninja/v2/all";
 			this.setModel(models.createCovidModel(sUrl), "covidAll");
 			
 			//create model for table/chart visibility
